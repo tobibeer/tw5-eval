@@ -1,7 +1,7 @@
 created: 20151206142750801
 creator: Tobias Beer
 cubed: 3^3
-modified: 20151206231452783
+modified: 20151206232344867
 modifier: Tobias Beer
 tags: 
 title: eval-Examples
@@ -88,7 +88,7 @@ type: text/vnd.tiddlywiki
 
 <<` """{{{ 1 2 +[eval:$eq[value + title \ final: value + 3 ]] }}}""">>
 
-''outputting input titles with truthy value:''
+''outputting input titles with a [[truthy|http://lmgtfy.com/?q=truthy+falsy+javascript]] value:''
 
 <<` """{{{ 1 2 3 +[eval:$[value + title \ init: -3]] }}}""">>
 
