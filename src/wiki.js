@@ -85,7 +85,6 @@ exports.parseExpressionReferences = function(expr,options,stack) {
 		r = v = undefined;
 		// Find opening bracket, either { or <
 		nextBracketPos = expr.substring(p).search(/[\{<]{2}[^\s]+/);
-		console.log(expr,p,nextBracketPos);
 		// None, found
 		if(nextBracketPos < 0) {
 			// Return expression as is
@@ -129,7 +128,7 @@ exports.parseExpressionReferences = function(expr,options,stack) {
 				// Split reference by semi-colon
 				what = what.split(";");
 				// Any options?
-				if(what.length > 1) {
+				if(what.length > 2) {
 					// Split second option element by comma
 					n = what[2].split(",");
 				}
@@ -144,7 +143,7 @@ exports.parseExpressionReferences = function(expr,options,stack) {
 					// Vartiable
 					options.widget ? options.widget.getVariable(what) : "";
 				// Any options?
-				if(n) {
+				if(n.length) {
 					// Get string before split characters?
 					text = n[2] ?
 						// Take those
