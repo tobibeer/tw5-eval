@@ -1,6 +1,7 @@
 created: 20151206142750801
 creator: Tobias Beer
-modified: 20151206215809660
+cubed: 3^3
+modified: 20151206231452783
 modifier: Tobias Beer
 tags: 
 title: eval-Examples
@@ -14,44 +15,54 @@ type: text/vnd.tiddlywiki
 
 <<` """{{{ [[]eval[1>2]] }}}""">>
 
-''using a math.js function:''
+''evaluating a reference''
 
-<<` """{{{ [[]eval[min(1,2)]] }}}""">>
+<<` """{{eval-Examples!!cubed}} = <$list filter="[[]eval[{{eval-Examples!!cubed}}]]"/>""">>
 
-''evaluating a variable:''
+''evaluating a wikitext variable:''
 
-<<` """<$vars expression="1+2">
+<$macrocall $name="`" text="""<$vars expression="1+2">
 {{{ [[]eval<expression>] }}} =
-{{{ [[]eval[<expression>]] }}}
-</$vars>""">>
+{{{ [[]eval[<<expression>>]] }}}
+</$vars>"""/>
 
 ''watch out for brackets:''
 
-<<` """<$vars expression="1+2">
-{{{ [[]eval[(<expression>) / 3]] }}} &lt;>
-{{{ [[]eval[<expression> / 3]] }}}
-</$vars>""">>
+<$macrocall $name="`" text="""<$vars expression="1+2">
+{{{ [[]eval[(<<expression>>) / 3]] }}} &lt;>
+{{{ [[]eval[<<expression>> / 3]] }}}
+</$vars>"""/>
 
-''evaluating an input title using the title variable or a text reference:''
+''using the set widget''
 
-<<` """{{{ [[1+2]eval[title]] }}} =
-{{{ [[1+2]eval[{!!title}]] }}} """>>
+<$macrocall $name="`" text="""<$set name="foo" filter="[[]eval[1+2]]">
+<<foo>>
+</$set>"""/>
 
-''without the `value` variable, you may just evaluate the last input title:''
+''evaluating an input title using the `title` variable or a text reference:''
 
-<<` """{{{ 1 2 +[eval[{!!title}]] }}}""">>
+<<` """<$list filter="[[1+2]eval[title]]"/> =
+<$list filter="[[1+2]eval[{{!!title}}]]"/> """>>
+
+''using a math.js function and the `title` variable:''
+
+<<` """{{{ [[1]eval[min(title,2)]] }}}""">>
+
+''without the `value` variable, you may just end up evaluating only the last input title:''
+
+<<` """{{{ 1 2 +[eval[title]] }}}""">>
 
 ''so, here's how to sum up input titles using the `value` variable:''
 
-<<` """{{{ 1 2 +[eval[value + {!!title}]] }}}""">>
+<<` """{{{ 1 2 +[eval[value + title]] }}}""">>
 
 ''using init:''
 
-<<` """{{{ 1 2 +[eval[value + {!!title} \ init: -1]] }}}""">>
+<<` """{{{ 1 2 +[eval[value + title \ init: -1]] }}}""">>
 
 ''using a final expression:''
 
-<<` """{{{ 1 2 +[eval[value + {!!title} \ final: value / 3]] }}}""">>
+<<` """{{{ 1 2 +[eval[value + title \ final: value / 3]] }}}""">>
 
 ''using a custom [[math.js format|http://mathjs.org/docs/reference/functions/format.html]]:''
 
@@ -59,31 +70,31 @@ type: text/vnd.tiddlywiki
 
 ''outputting values:''
 
-<<` """{{{ 1 2 +[eval:$val[value + {!!title}]] }}}""">>
+<<` """{{{ 1 2 +[eval:$val[value + title]] }}}""">>
 
 ''outputting expressions:''
 
-<<` """{{{ 1 2 +[eval:$expr[value + {!!title}]] }}}""">>
+<<` """{{{ 1 2 +[eval:$expr[value + title]] }}}""">>
 
 ''outputting equations:''
 
-<<` """{{{ 1 2 +[eval:$eq[value + {!!title}]] }}}""">>
+<<` """{{{ 1 2 +[eval:$eq[value + title]] }}}""">>
 
 ''outputting equations with titles:''
 
-<<` """{{{ 1 2 +[eval:$eq[value + {!!title} \ current: => for %title%]] }}}""">>
+<<` """{{{ 1 2 +[eval:$eq[value + title \ current: => for %title%]] }}}""">>
 
 ''outputting equations with a final expression:''
 
-<<` """{{{ 1 2 +[eval:$eq[value + {!!title} \ final: value + 3 ]] }}}""">>
+<<` """{{{ 1 2 +[eval:$eq[value + title \ final: value + 3 ]] }}}""">>
 
 ''outputting input titles with truthy value:''
 
-<<` """{{{ 1 2 3 +[eval:$[{!!title} + value \ init: -3]] }}}""">>
+<<` """{{{ 1 2 3 +[eval:$[value + title \ init: -3]] }}}""">>
 
 ''outputting all input titles when one has a truthy value:''
 
-<<` """{{{ 0 1 +[eval:$all[{!!title}]] }}}""">>
+<<` """{{{ 0 1 +[eval:$all[title]] }}}""">>
 
 ''input titles with a truthy value and a funny comparison:''
 
@@ -98,3 +109,24 @@ var n=title+1;
 console.log("A NUMBER:",n);
 n;
 ]]}}}""">>
+
+''specifying an undefined value''
+
+<<` """<$list filter="[[]eval[{{!!foo}}]]"/> &lt;>
+<$list filter="[[]eval[{{!!foo;3}}]]"/> """>>
+
+''taking only a substring of a reference value''
+
+<<` """{{{ [[123foo]eval[{{!!title;;0,3}}]] }}}""">>
+
+''splitting a reference value''
+
+<<` """{{{ [[123foo]eval[{{!!title;;,,foo}}]] }}}""">>
+
+''same for variables''<br>
+//nope, you cannot pass macro parameters//
+
+<$macrocall $name="`" text="""<$vars foo="123foo">
+{{{ [[]eval[<<doesntexist;1>>]] }}} <br>
+{{{ [[]eval[<<foo;;0,3>>]] }}}
+</$vars>"""/>
