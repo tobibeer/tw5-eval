@@ -1,0 +1,88 @@
+created: 20151206141608290
+creator: Tobias Beer
+modified: 20151206172047127
+modifier: Tobias Beer
+title: eval-Filter
+type: text/vnd.tiddlywiki
+
+The ''eval'' filter allows to evaluate an expression as:
+
+```
+eval:<suffix>[<operand>]
+```
+
+The suffix is optional and the operand by default evaluated as the main expression.
+
+!! Operand
+
+Use the operand to specify expressions, separated via `\`, as any of...
+
+# a main expression
+# computational variables
+# configuration options
+
+Declare computational variables or configuration options using the `name: value` notation. The first expression not declaring either is taken as the main expression, e.g.:
+
+<<` "{{{ 1 2 +[eval[value + {!!title} \\ init: 10]] }}}">>
+
+Here, the main expression is `value + {!!title}`, meaning: "at each iteration, take the value of the variable called ''value'' and add the ''title'' of the current tiddler as a number to it. Additionally, a special variable is declared, namely ''init'' with the value `10`.
+
+!!! Special Variables
+
+Some variables have a special meaning using the eval filter:
+
+; value
+: the result of evaluating the expression with respect to the previous input title
+:: for the first input title, if defined, defaults to ''init'' (see below), otherwise ''0''
+; title
+: the current input title being processed
+
+@@.note
+''Note:'' While only the main expression may use the running variables ''value'' and ''title'', none of the other variables below shall be used in it, except ''init''.
+@@
+
+; init
+: the value with which ''value'' is initialized before iterating input titles
+; final
+: an expression evaluated after all input titles have been processed
+; format
+: a desired [[output format for math.js|http://mathjs.org/docs/reference/functions/format.html]]
+: not available when using [[native js eval|eval-Configure]]
+; current
+: the output format for the current tiddler title as displayed in an //output mode// that supports it, see ''Suffixes'' below
+; lib
+: the library used to evaluate the expression, see [[configuration|eval-Configure]]
+:: specify as `lib:<type>`, e.g. `lib:math.js` or `lib:js`
+:: only those types are available for which there are [[configured|eval-Configure]] __and__ loaded libraries
+
+!! Custom Variables
+
+To simplify your main expression, you are free to declare any custom variables you may need, using simple words other than those reserved for the above special variables.
+
+They...
+
+* may __only__ be used in either the ''main'' or the ''final'' expression
+* are __only__ evaluated __before__ iterating input titles, ever during
+* shall __not__ reference each other
+
+!!! Text References and ~WikiText Variables
+
+To use <<x TextReference "text references">> in your expressions, use single curly brackets, e.g. `{!!some-field}`. For <<x Variables wikitext-variables>> use single angle brackets, e.g. `<variable-name>`. To safely use "less than" in your expressions, use a blank, e.g. `value < init`.
+
+For text references in the ''main'' expression, the <<x "Current Tiddler" "current tiddler">> points to the input title being processed, otherwise to that of the given context.
+
+!! Suffix
+
+In the operator suffix, you can specify one of the following //output modes// for the eval filter, all prefixed ''$'':
+
+; $
+: returns a list of those input titles where ''value'' is truthy
+; $all
+: returns all input titles if there is a truthy ''value'' for any input title
+; $val
+: output a list of item values for each input title
+; $expr
+: output the expressions to be evaluated per input title
+; $eq
+: output equations as ''expr = value'' per input title
+:: this includes the ''final'' expression, if defined

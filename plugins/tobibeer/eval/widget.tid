@@ -1,0 +1,16 @@
+title: $:/plugins/tobibeer/eval/widget
+
+Evaluates inner content as expression.
+
+```
+<$eval lib="js">1 + {{!!count}}</$eval>
+```
+
+!! Attributes
+
+; lib
+: library to use for evaluation
+; undefined
+: output if result is undefined
+; quiet
+: if `true` => no verbose errors

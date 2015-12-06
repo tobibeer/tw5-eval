@@ -1,0 +1,12 @@
+created: 20151206151848820
+creator: Tobias Beer
+modified: 20151206152411404
+modifier: Tobias Beer
+tags: 
+title: eval-JS
+type: text/vnd.tiddlywiki
+
+If you don't know native ~JavaScript eval, perhaps don't get started. If you do, consider the fact that your wiki will be slightly more vulnerable thanks to:
+
+* you making serious mistakes that may lead to data loss
+* visitors / users executing arbitrary ~JavaScript, directly in wikitext

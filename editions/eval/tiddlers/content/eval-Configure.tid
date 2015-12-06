@@ -1,0 +1,27 @@
+created: 20151206142814183
+creator: Tobias Beer
+modified: 20151206164625600
+modifier: Tobias Beer
+tags: 
+title: eval-Configure
+type: text/vnd.tiddlywiki
+
+This plugin is designed for evaluating expressions using [[math.js]] by default. As different sources may provide it, you can configure libraries to be loaded via the <<x JSONTiddlers "JSON tiddler">> $:/plugins/tobibeer/eval/libraries: <$transclude tiddler="$:/plugins/tobibeer/eval" subtiddler="$:/plugins/tobibeer/eval/libraries"/>
+
+@@.note
+''Note:'' Specified libraries are parsed in sequence. The first one actually found will be the one this plugin uses by default to evaluate expressions for a given //type//.
+@@
+
+In fact, so long as a library implements an `eval` function, you can use ''tobibeer/eval'' with other 3rd party libraries similar to [[math.js]] in order to evaluate expressions. If you actually do so, let us know [[in the groups|https://groups.google.com/forum/?fromgroups=#!forum/tiddlywiki]].
+
+!! Native ~JavaScript Eval
+
+While it is highly recommended that you install and use [[math.js]] to evaluate expressions, you are free to use this plugin with <<pop "native ~JavaScript eval" "eval-JS" "pretty pop-tiddler" btn-class:"tc-btn-invisible abbr">>, by adding it as a pseudo-library to the JSON configuration [[as is done in this demo wiki|$:/plugins/tobibeer/eval/libraries]]:
+
+<$transclude tiddler="$:/plugins/tobibeer/eval/libraries"/>
+
+@@.note
+''Note:'' If you add `{"type":"js"}` to the end, it will serve as a fallback when no other library is found. If you put it first, native js eval will be the default "library".
+@@
+
+In order to suppress the console notification indicating that you are using native js eval, specify some otherwise not important ''id'' other than `js/eval`.

@@ -1,0 +1,7 @@
+title: $:/plugins/tobibeer/eval/libraries
+type: application/json
+
+[
+	{"type":"math.js", "require": "$:/lib/math.js"},
+	{"type":"math.js", "id":"mklauber/math.js", "require":"$:/plugins/mklauber/math.js/math.js"}
+]

@@ -1,0 +1,12 @@
+created: 20151206161854839
+creator: Tobias Beer
+modified: 20151206175059036
+modifier: Tobias Beer
+tags: 
+title: eval-Install
+type: text/vnd.tiddlywiki
+
+<<plugin-install eval>>
+
+@@.note
+''Important:'' The plugin ''tobibeer/eval'' is designed to be used with [[math.js|http://mathjs.org]], but does __not__ ship with it! You therefore need to install [[tobibeer/math.js|math.js]] as a separate plugin. Should you have [[mklauber/math.js]] installed, there's nothing for you to do since ''tobibeer/eval'''s library handling knows how load the ''math.js'' it ships with.

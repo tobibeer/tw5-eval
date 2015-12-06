@@ -1,0 +1,87 @@
+created: 20151206142750801
+creator: Tobias Beer
+modified: 20151206205609709
+modifier: Tobias Beer
+tags: 
+title: eval-Examples
+type: text/vnd.tiddlywiki
+
+''just evaluate an operand:''
+
+<<` """{{{ [[]eval[1+2]] }}}""">>
+
+''by means of comparison:''
+
+<<` """{{{ [[]eval[1>2]] }}}""">>
+
+''using a math.js function:''
+
+<<` """{{{ [[]eval[min(1,2)]] }}}""">>
+
+''evaluating a variable:''
+
+<<` """<$vars expression="1+2">
+{{{ [[]eval<expression>] }}} =
+{{{ [[]eval[<expression>]] }}}
+</$vars>""">>
+
+''watch out for brackets:''
+
+<<` """<$vars expression="1+2">
+{{{ [[]eval[(<expression>) / 3]] }}} &lt;>
+{{{ [[]eval[<expression> / 3]] }}}
+</$vars>""">>
+
+''evaluating an input title using the title variable or a text reference:''
+
+<<` """{{{ [[1+2]eval[title]] }}} =
+{{{ [[1+2]eval[{!!title}]] }}} """>>
+
+''without the `value` variable, you may just evaluate the last input title:''
+
+<<` """{{{ 1 2 +[eval[{!!title}]] }}}""">>
+
+''so, here's how to sum up input titles using the `value` variable:''
+
+<<` """{{{ 1 2 +[eval[value + {!!title}]] }}}""">>
+
+''using init:''
+
+<<` """{{{ 1 2 +[eval[value + {!!title} \ init: -1]] }}}""">>
+
+''using a final expression:''
+
+<<` """{{{ 1 2 +[eval[value + {!!title} \ final: value / 3]] }}}""">>
+
+''outputting values:''
+
+<<` """{{{ 1 2 +[eval:$val[value + {!!title}]] }}}""">>
+
+''outputting expressions:''
+
+<<` """{{{ 1 2 +[eval:$expr[value + {!!title}]] }}}""">>
+
+''outputting equations:''
+
+<<` """{{{ 1 2 +[eval:$eq[value + {!!title}]] }}}""">>
+
+''outputting equations with titles:''
+
+<<` """{{{ 1 2 +[eval:$eq[value + {!!title} \ current: => for %title%]] }}}""">>
+
+''outputting equations with a final expression:''
+
+<<` """{{{ 1 2 +[eval:$eq[value + {!!title} \ final: value + 3 ]] }}}""">>
+
+''outputting input titles with truthy value:''
+
+<<` """{{{ 1 2 3 +[eval:$[{!!title} + value \ init: -3]] }}}""">>
+
+''outputting all input titles when one has a truthy value:''
+
+<<` """{{{ 0 1 +[eval:$all[{!!title}]] }}}""">>
+
+''input titles with a truthy value and a funny comparison:''
+
+<<` """{{{ 1 2 +[eval:$[title == 1]] }}} =
+{{{ 1 2 +[eval:$[title == "1"]] }}} """>>

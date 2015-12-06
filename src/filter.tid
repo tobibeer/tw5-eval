@@ -1,0 +1,34 @@
+title: $:/plugins/tobibeer/eval/filter
+
+```
+eval:<suffix>[<expression>]
+
+{{{ 1 2 +[eval:$eq[
+{!!title} + value \
+init: 10 \
+final: value / 100
+]] }}}
+```
+
+; `<expression>`
+: declare an expression, plus variables and options as `name:value`, split via `\`
+; runtime variables
+: value, title
+; special variables
+: init, final
+; options
+: format, current, lib
+; custom variables
+: use simple word-titles
+; `<suffix>`
+: optional mode, prefixed $
+; $
+: any input titles with truthy value
+; $all
+: all input titles, if one has truthy value
+; $val
+: values
+; $expr
+: expressions
+; $eq
+: equations

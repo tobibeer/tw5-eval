@@ -1,0 +1,15 @@
+created: 20151206153434872
+creator: Tobias Beer
+modified: 20151206172852055
+modifier: Tobias Beer
+title: eval-Info
+type: text/vnd.tiddlywiki
+
+The plugin [[$:/plugins/tobibeer/eval]] provides:
+
+; eval[&lt;expression>]
+: a ''filter'' to evaluate an expression against input titles
+; &lt;$eval>&#123;&#123;!!foo}} + 1</$eval>
+: a ''widget'' evaluating its inner content as an expression
+
+<<plugin-docs-cp eval>>

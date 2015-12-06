@@ -1,0 +1,15 @@
+title: $:/plugins/tobibeer/eval/readme
+
+This plugin allows you to compute and compare tiddler propeties using...
+
+; eval[&lt;expression>]
+: a ''filter'' evaluating an expression in the operand
+; &lt;$eval>{&#123;!!count}} + 1&lt;/eval>
+: a ''widget'' evaluating it's content as an expression
+
+<br>
+
+; documentation / examples / demos...
+: http://tobibeer.github.io/tw5-plugins#eval
+; configuration
+: $:/plugins/tobibeer/eval/libraries (see documentation)

@@ -1,0 +1,12 @@
+{
+    "title": "$:/plugins/tobibeer/eval",
+    "description": "Evaluate expressions, compute and compare tiddler properties and data",
+    "author": "Tobias Beer",
+    "version": "0.6.7 BETA",
+    "core-version": ">=5.1.9",
+    "source": "https://github.com/tobibeer/tw5-eval",
+    "documentation": "https://tobibeer.github.io/tw5-plugins#eval",
+    "plugin-type": "plugin",
+	"requires": "",
+	"list": "readme filter widget"
+}

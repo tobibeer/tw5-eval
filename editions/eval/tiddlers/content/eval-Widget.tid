@@ -1,0 +1,32 @@
+count: 1
+created: 20151206172111014
+creator: Tobias Beer
+modified: 20151206174656541
+modifier: Tobias Beer
+tags: 
+title: eval-Widget
+type: text/vnd.tiddlywiki
+
+The plugin ''tobibeer/eval'' provides the ''&lt;$eval>'' widget. Equivalent to the ''calc'' widget of [[mklauber/math.js|http://mklauber.github.io/tiddly-mathjs/]], it evaluates its inner content as an expression, e.g.:
+
+<<` "''count:'' {{!!count}} =>
+''add 1:'' <$eval>{{!!count}} + 1</$eval>">>
+
+However, the ''eval'' widget evaluates the expression using the [[default library|eval-Configure]], providing the following attributes:
+
+| !Attribute | !Description | !Default |
+|''lib''|the library type to be used, e.g. `lib=js`<br>» only those both [[configured|eval-Configure]] __and__ loaded|the default library,<br>see [[configuration|eval-Configure]]|
+|''quiet''|whether the widget shows detailed evaluation errors|`false`|
+|''undefined''|a fallback value returned,<br> should the expression yield undefined|`undefined`|
+
+The below example uses ~JavaScript to evaluate the contents...
+
+<<` """<$eval library="js">
+var e = {{!!count}} + 1;
+console.log("COUNT:",e);
+e;
+</$eval>""">>
+
+@@.note
+''Note:'' For js eval to be available, it needs to be [[configured|eval-Configure]]. Now, take a look at the browser console.
+@@
