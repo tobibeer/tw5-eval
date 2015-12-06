@@ -1,6 +1,6 @@
 created: 20151206142750801
 creator: Tobias Beer
-modified: 20151206211458745
+modified: 20151206215809660
 modifier: Tobias Beer
 tags: 
 title: eval-Examples
@@ -89,3 +89,12 @@ type: text/vnd.tiddlywiki
 
 <<` """{{{ 1 2 +[eval:$[title == 1]] }}} =
 {{{ 1 2 +[eval:$[title == "1"]] }}} """>>
+
+''evaluate using a specified library''<br>
+//go take a look at the console//
+
+<<` """{{{ [[1]eval[lib:js \
+var n=title+1;
+console.log("A NUMBER:",n);
+n;
+]]}}}""">>
