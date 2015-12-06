@@ -84,7 +84,8 @@ exports.parseExpressionReferences = function(expr,options,stack) {
 		// Reset current reference or variable
 		r = v = undefined;
 		// Find opening bracket, either { or <
-		nextBracketPos = expr.substring(p).search(/[\{<]{1}[^\s]+/);
+		nextBracketPos = expr.substring(p).search(/[\{<]{2}[^\s]+/);
+		console.log(expr,p,nextBracketPos);
 		// None, found
 		if(nextBracketPos < 0) {
 			// Return expression as is
@@ -99,20 +100,20 @@ exports.parseExpressionReferences = function(expr,options,stack) {
 			// Add anything before that as literal
 			e += expr.substring(p,nextBracketPos);
 			// Move past bracket
-			p = nextBracketPos + 1;
+			p = nextBracketPos + 2;
 			// Depending on bracket type
 			switch (bracket) {
 				case "{":
 					// As text reference
 					r = true;
 					// Find matching closing bracket
-					nextBracketPos = expr.indexOf("}",p);
+					nextBracketPos = expr.indexOf("}}",p);
 					break;
 				case "<":
 					// As variable
 					v = true;
 					// Find matching closing bracket
-					nextBracketPos = expr.indexOf(">",p);
+					nextBracketPos = expr.indexOf(">>",p);
 					break;
 			}
 			// No closing bracket for opening bracket of a reference or variable?
@@ -124,7 +125,7 @@ exports.parseExpressionReferences = function(expr,options,stack) {
 				// The reference
 				what = expr.substring(p,nextBracketPos);
 				// Move pointer past closing bracket
-				p = nextBracketPos + 1;
+				p = nextBracketPos + 2;
 				// Split reference by semi-colon
 				what = what.split(";");
 				// Any options?
