@@ -1,6 +1,6 @@
 created: 20151206141608290
 creator: Tobias Beer
-modified: 20151206172047127
+modified: 20151206225033534
 modifier: Tobias Beer
 title: eval-Filter
 type: text/vnd.tiddlywiki
@@ -50,6 +50,7 @@ Some variables have a special meaning using the eval filter:
 : not available when using [[native js eval|eval-Configure]]
 ; current
 : the output format for the current tiddler title as displayed in an //output mode// that supports it, see ''Suffixes'' below
+:: use the placeholder `%title%` for the current input title
 ; lib
 : the library used to evaluate the expression, see [[configuration|eval-Configure]]
 :: specify as `lib:<type>`, e.g. `lib:math.js` or `lib:js`
@@ -80,9 +81,9 @@ In the operator suffix, you can specify one of the following //output modes// fo
 ; $all
 : returns all input titles if there is a truthy ''value'' for any input title
 ; $val
-: output a list of item values for each input title
+: output a list of item values for each input title — supports ''current''
 ; $expr
-: output the expressions to be evaluated per input title
+: output the expressions to be evaluated per input title — supports ''current''
 ; $eq
-: output equations as ''expr = value'' per input title
+: output equations as ''expr = value'' per input title — supports ''current''
 :: this includes the ''final'' expression, if defined
