@@ -1,7 +1,7 @@
 created: 20151206142750801
 creator: Tobias Beer
 cubed: 3^3
-modified: 20151206232344867
+modified: 20151207001416904
 modifier: Tobias Beer
 tags: 
 title: eval-Examples
@@ -17,7 +17,9 @@ type: text/vnd.tiddlywiki
 
 ''evaluating a reference''
 
-<<` """{{eval-Examples!!cubed}} = <$list filter="[[]eval[{{eval-Examples!!cubed}}]]"/>""">>
+<<` """{{eval-Examples!!cubed}} =
+<$list filter="[[]eval{eval-Examples!!cubed}]"/> = 
+<$list filter="[[]eval[{{eval-Examples!!cubed}}]]"/> """>>
 
 ''evaluating a wikitext variable:''
 
