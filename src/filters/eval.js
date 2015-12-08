@@ -118,7 +118,7 @@ exports.eval = function(source,operator,options) {
 		}
 		// Do nothing without a lib
 		if(!vars.lib || !vars.lib.eval) {
-			throw("Error in eval filter: No suitable library configured.");
+			throw("No suitable library configured.");
 		}
 
 		// Default: empty expression

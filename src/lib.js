@@ -96,8 +96,15 @@ exports.getLibrary = function(options) {
 									// Use type as id
 									def.id = idd = type;
 								}
-								// Load lib via require
-								l = require(def.require);
+								// If library tiddler exists
+								if(wiki.getTiddler(def.require)) {
+									// Load lib via require
+									l = require(def.require);
+								// Otherwise, nothing to load
+								} else {
+									// Next lib
+									return;
+								}
 							}
 							// No libraries for type registered yet?
 							if (!wiki.libraries[type]) {
@@ -134,15 +141,24 @@ exports.getLibrary = function(options) {
 
 		// No cached lib retrieved yet...
 		if (!lib) {
-			// Type specified but never indexed
-			if(t && !wiki.libraries[t]) {
-				throw "No library of type '" + t + "' loaded!";
+			// No type specified
+			if(t) {
+				// Type specified but never indexed
+				if(t && !wiki.libraries[t]) {
+					console.log("No '" + t + "' library loaded for use with tobibeer/eval!");
+				} else {
+					// Fetch lib from index
+					lib = wiki.libraries[t].loaded[
+						// Of specified id, otherwise first indexed for type
+						id || wiki.libraries[t].primary
+					];
+				}
+			// No type specified?
+			} else {
+				//Nothing could be loaded
+				console.log("Could not load any library configured for tobibeer/eval!\n" +
+							"Install tobibeer/math.js or enable js eval.");
 			}
-			// Fetch lib from index
-			lib = wiki.libraries[t].loaded[
-				// Of specified id, otherwise first indexed for type
-				id || wiki.libraries[t].primary
-		  	];
 		}
 	}
 	return lib;

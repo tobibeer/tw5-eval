@@ -10,3 +10,11 @@ type: text/vnd.tiddlywiki
 
 @@.note
 ''Important:'' The plugin ''tobibeer/eval'' is designed to be used with [[math.js|http://mathjs.org]], but does __not__ ship with it! You therefore need to install [[tobibeer/math.js|math.js]] as a separate plugin. Should you have [[mklauber/math.js]] installed, there's nothing for you to do since ''tobibeer/eval'''s library handling knows how load the ''math.js'' it ships with.
+@@
+
+!! Version History
+
+; 0.6.8 BETA / 2015-12-08
+: bugfix release => threw error with no configured library available
+; 0.6.7 BETA / 2015-12-07
+: initial release
