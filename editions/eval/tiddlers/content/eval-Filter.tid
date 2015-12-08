@@ -1,6 +1,6 @@
 created: 20151206141608290
 creator: Tobias Beer
-modified: 20151206225033534
+modified: 20151208193743367
 modifier: Tobias Beer
 title: eval-Filter
 type: text/vnd.tiddlywiki
@@ -23,9 +23,9 @@ Use the operand to specify expressions, separated via `\`, as any of...
 
 Declare computational variables or configuration options using the `name: value` notation. The first expression not declaring either is taken as the main expression, e.g.:
 
-<<` "{{{ 1 2 +[eval[value + {!!title} \\ init: 10]] }}}">>
+<<` "{{{ 1 2 +[eval[value + {{!!title}} \\ init: 10]] }}}">>
 
-Here, the main expression is `value + {!!title}`, meaning: "at each iteration, take the value of the variable called ''value'' and add the ''title'' of the current tiddler as a number to it. Additionally, a special variable is declared, namely ''init'' with the value `10`.
+Here, the main expression is `value + {{!!title}}`, meaning: "at each iteration, take the value of the variable called ''value'' and add the ''title'' of the current tiddler as a number to it. Additionally, a special variable is declared, namely ''init'' with the value `10`.
 
 !!! Special Variables
 
