@@ -165,10 +165,18 @@ exports.eval = function(source,operator,options) {
 		vars.value = vars.init === undefined ? 0 : vars.init;
 		//console.log(vars);
 
+		// If we haven't got a count
+		if(!vars.count) {
+			// Initialize to 0
+			vars.count = 0;
+		}
+
 		// Anything to calc?
 		if(expr || vars.value || vars.final !== undefined) {
 			// Each input title
 			source(function(tiddler,title) {
+				// Increment counter
+				vars.count++;
 				// Store title
 				vars.title = title;
 				// Title suffix

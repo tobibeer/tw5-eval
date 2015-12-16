@@ -14,6 +14,8 @@ type: text/vnd.tiddlywiki
 
 !! Version History
 
+; 0.6.9 BETA / 2015-12-16
+: added count variable
 ; 0.6.8 BETA / 2015-12-08
 : bugfix release => threw error with no configured library available
 ; 0.6.7 BETA / 2015-12-07

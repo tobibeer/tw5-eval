@@ -1,7 +1,7 @@
 created: 20151206142750801
 creator: Tobias Beer
 cubed: 3^3
-modified: 20151207001416904
+modified: 20151216200053952
 modifier: Tobias Beer
 tags: 
 title: eval-Examples
@@ -50,7 +50,8 @@ type: text/vnd.tiddlywiki
 
 <<` """{{{ [[1]eval[min(title,2)]] }}}""">>
 
-''without the `value` variable, you may just end up evaluating only the last input title:''
+''without the `value` variable?''<br>
+//you may just end up evaluating only the last input title!//
 
 <<` """{{{ 1 2 +[eval[title]] }}}""">>
 
@@ -65,6 +66,10 @@ type: text/vnd.tiddlywiki
 ''using a final expression:''
 
 <<` """{{{ 1 2 +[eval[value + title \ final: value / 3]] }}}""">>
+
+''getting the count of input titles using the final expression:''
+
+<$macrocall $name="`" text="""{{{ a b c +[eval[final: count]] }}}"""/>
 
 ''using a custom [[math.js format|http://mathjs.org/docs/reference/functions/format.html]]:''
 

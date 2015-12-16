@@ -48,6 +48,9 @@ Some variables have a special meaning using the eval filter:
 ; format
 : a desired [[output format for math.js|http://mathjs.org/docs/reference/functions/format.html]]
 : not available when using [[native js eval|eval-Configure]]
+; count
+: a counter for each input titles
+:: can be initialized to something other than 0
 ; current
 : the output format for the current tiddler title as displayed in an //output mode// that supports it, see ''Suffixes'' below
 :: use the placeholder `%title%` for the current input title
@@ -59,6 +62,10 @@ Some variables have a special meaning using the eval filter:
 !! Custom Variables
 
 To simplify your main expression, you are free to declare any custom variables you may need, using simple words other than those reserved for the above special variables.
+
+@@.note
+''Note:'' To avoid any conflicts with potential future default variables, consider using a prefix for your variables such as ''$'' or ''_'', e.g. ''_rate''.
+@@
 
 They...
 
