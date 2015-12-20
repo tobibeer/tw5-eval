@@ -67,10 +67,10 @@ To simplify your main expression, you are free to declare any custom variables y
 ''Note:'' To avoid any conflicts with potential future default variables, consider using a prefix for your variables such as ''$'' or ''_'', e.g. ''_rate''.
 @@
 
-They...
+Custom variables...
 
 * may __only__ be used in either the ''main'' or the ''final'' expression
-* are __only__ evaluated __before__ iterating input titles, ever during
+* are __only__ evaluated __before__ iterating input titles, never during
 * shall __not__ reference each other
 
 !!! Text References and ~WikiText Variables
