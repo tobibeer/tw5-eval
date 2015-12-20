@@ -16,7 +16,7 @@ It is designed to work with:
 
 ; [[tobibeer/math.js|math.js]]
 : providing the library [[math.js]] as a plugin
-: needs to be installed individually
+: needs to be [[installed separately|math.js-Install]]
 ; javascript
 : [[native eval|eval-JS]] is supported as well, but needs to be [[specifically activated|eval-Configure]]
 
