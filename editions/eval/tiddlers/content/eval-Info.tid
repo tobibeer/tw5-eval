@@ -1,6 +1,6 @@
 created: 20151206153434872
 creator: Tobias Beer
-modified: 20151206172852055
+modified: 20151220073253311
 modifier: Tobias Beer
 title: eval-Info
 type: text/vnd.tiddlywiki
@@ -11,5 +11,13 @@ The plugin [[$:/plugins/tobibeer/eval]] provides:
 : a ''filter'' to evaluate an expression against input titles
 ; &lt;$eval>&#123;&#123;!!foo}} + 1</$eval>
 : a ''widget'' evaluating its inner content as an expression
+
+It is designed to work with:
+
+; [[tobibeer/math.js|math.js]]
+: providing the library [[math.js]] as a plugin
+: needs to be installed individually
+; javascript
+: [[native eval|eval-JS]] is supported as well, but needs to be [[specifically activated|eval-Configure]]
 
 <<plugin-docs-cp eval>>
