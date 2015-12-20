@@ -1,16 +1,15 @@
 count: 1
 created: 20151206172111014
 creator: Tobias Beer
-modified: 20151206174656541
+modified: 20151220082218897
 modifier: Tobias Beer
-tags: 
 title: eval-Widget
 type: text/vnd.tiddlywiki
 
 The plugin ''tobibeer/eval'' provides the ''&lt;$eval>'' widget. Equivalent to the ''calc'' widget of [[mklauber/math.js|http://mklauber.github.io/tiddly-mathjs/]], it evaluates its inner content as an expression, e.g.:
 
-<<` "''count:'' {{!!count}} =>
-''add 1:'' <$eval>{{!!count}} + 1</$eval>">>
+<<` "''count:'' {{eval-Widget!!count}} =>
+''add 1:'' <$eval>{{eval-Widget!!count}} + 1</$eval>">>
 
 However, the ''eval'' widget evaluates the expression using the [[default library|eval-Configure]], providing the following attributes:
 
@@ -21,8 +20,8 @@ However, the ''eval'' widget evaluates the expression using the [[default librar
 
 The below example uses ~JavaScript to evaluate the contents...
 
-<<` """<$eval library="js">
-var e = {{!!count}} + 1;
+<<` """<$eval lib="js">
+var e = {{eval-Widget!!count}} + 1;
 console.log("COUNT:",e);
 e;
 </$eval>""">>
