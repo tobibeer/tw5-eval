@@ -1,7 +1,7 @@
 count: 1
 created: 20151206172111014
 creator: Tobias Beer
-modified: 20151220082218897
+modified: 20160107112501837
 modifier: Tobias Beer
 title: eval-Widget
 type: text/vnd.tiddlywiki
@@ -17,15 +17,3 @@ However, the ''eval'' widget evaluates the expression using the [[default librar
 |''lib''|the library type to be used, e.g. `lib=js`<br>» only those both [[configured|eval-Configure]] __and__ loaded|the default library,<br>see [[configuration|eval-Configure]]|
 |''quiet''|whether the widget shows detailed evaluation errors|`false`|
 |''undefined''|a fallback value returned,<br> should the expression yield undefined|`undefined`|
-
-The below example uses ~JavaScript to evaluate the contents...
-
-<<` """<$eval lib="js">
-var e = {{eval-Widget!!count}} + 1;
-console.log("COUNT:",e);
-e;
-</$eval>""">>
-
-@@.note
-''Note:'' For js eval to be available, it needs to be [[configured|eval-Configure]]. Now, take a look at the browser console.
-@@

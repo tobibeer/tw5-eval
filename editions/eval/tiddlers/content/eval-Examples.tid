@@ -1,9 +1,10 @@
 created: 20151206142750801
 creator: Tobias Beer
 cubed: 3^3
-modified: 20151216200053952
+modified: 20160107112432764
 modifier: Tobias Beer
-tags: 
+summary: examples for the [[eval]] filter and widget
+tags: eval Examples
 title: eval-Examples
 type: text/vnd.tiddlywiki
 

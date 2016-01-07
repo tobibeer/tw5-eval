@@ -1,0 +1,16 @@
+created: 20160107112757364
+creator: Tobias Beer
+modified: 20160107121351788
+modifier: Tobias Beer
+summary: evaluate a filter attribute via [[eval]] to set a variable using [[setvars]]
+tags: Examples eval
+title: Evaluate JavaScript In A Filter
+type: text/vnd.tiddlywiki
+
+<$macrocall $name="`" text="""<$set name="evaled" filter="[[1]eval[1 + title]]">
+<<evaled>>
+</$set>"""/>
+
+@@.note
+''Note:'' For js eval to be available, it needs to be [[configured|eval-Configure]]. Now, take a look at the browser console.
+@@

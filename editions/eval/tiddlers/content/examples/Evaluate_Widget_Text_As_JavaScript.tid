@@ -1,0 +1,18 @@
+created: 20160107112503205
+creator: Tobias Beer
+modified: 20160107112650513
+modifier: Tobias Beer
+summary: use the [[eval]] filter or widget to evaluate ~JavaScript or math.js expressions
+tags: Examples eval
+title: Evaluate Widget Text As JavaScript
+type: text/vnd.tiddlywiki
+
+<<` """<$eval lib="js">
+var e = {{eval-Widget!!count}} + 1;
+console.log("COUNT:",e);
+e;
+</$eval>""">>
+
+@@.note
+''Note:'' For js eval to be available, it needs to be [[configured|eval-Configure]]. Now, take a look at the browser console.
+@@
